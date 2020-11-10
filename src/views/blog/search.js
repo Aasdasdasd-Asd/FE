@@ -1,5 +1,12 @@
 import React from 'react'
 import './search.css'
+import {TextField,
+    Box,
+    Button,
+    InputAdornment,
+    SvgIcon
+  } from '@material-ui/core';
+import { Search as SearchIcon } from 'react-feather';
 
 export default class Search extends React.Component{
     state ={
@@ -22,9 +29,28 @@ export default class Search extends React.Component{
     }
     render(){
         return(
-            <div>
-                <input placeholder='Search by title' type="text" value={this.state.value} onChange={this.handleChange}></input>
-                <button onClick={this.handleSubmit}>Search</button>
+            <div className='row' style={{margin: '40px'}}>
+                <Box maxWidth={700} className='col'>
+                    <TextField
+                    value={this.state.value} onChange={this.handleChange}
+                        fullWidth
+                        InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                            <SvgIcon
+                                fontSize="small"
+                                color="action"
+                            >
+                                <SearchIcon />
+                            </SvgIcon>
+                            </InputAdornment>
+                        )
+                        }}
+                        placeholder="Search title"
+                        variant="outlined"
+                    />
+                </Box>
+                <Button style={{marginLeft: '60px'}} className='col' onClick={this.handleSubmit} variant="contained" color="primary">Search</Button>
             </div>
         )
     }

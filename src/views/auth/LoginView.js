@@ -16,6 +16,8 @@ import LoginService from '../../services/LoginService'
 
 const login = new LoginService()
 
+export let auth = false
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -59,8 +61,13 @@ const LoginView = () => {
                 username : values.username,
                 password : values.password
               }
-              console.log(data);
-                login.login(data)
+                login.login(data).then(response => {
+                  if (response.data.access_token) {
+                    localStorage.setItem("token", JSON.stringify(response.data));
+                    auth = true
+                    navigate('/app/dashboard', { replace: true });
+                  }
+                })
               }
             }
           >

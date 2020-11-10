@@ -5,7 +5,14 @@ import './index.css'
 import CreateOrEdit from './createOrEdit';
 import BlogService from '../../services/BlogService';
 
-import { Card, Container, Page } from '@material-ui/core';
+import { Button, Card, Container } from '@material-ui/core';
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow,
+  } from '@material-ui/core';
 // import { Pagination } from '@material-ui/lab';
 
 export default class Blog extends Component{
@@ -110,50 +117,80 @@ export default class Blog extends Component{
         })
     }
 
-    render(){      
+
+    render(){  
         return(
-            <Container maxWidth="lg" id='blog'>
+            <Container maxWidth="xl" id='blog'>
             <Card>
             <div >
-            <div className='top row' >
-                <button style={{'width' : '7rem', 'margin' : '40px' }} onClick={this.create}>Create new</button>
-                <div id='search'>
-                    <Search titleSearch={this.searchByTitle}></Search>
+                <div className='top row' >
+                    <Button style={{'width' : '5rem', 'margin' : '40px' }} onClick={this.create} variant="contained" color="primary">Create new</Button>
+                    <div id='search'>
+                        <Search titleSearch={this.searchByTitle}></Search>
+                    </div>
                 </div>
-            </div>
-                {
-                    this.state.data.map((row, index) => {
-                        return(
-                            <div key ={index} id='row'>
-                                <div className='row' id='title'>
-                                    <div className='col-10'>{row.title}</div>
-                                    <div className='col button'>
-                                        <button onClick={() => this.edit(row)}>Edit</button>
-                                        <button onClick={() => this.delete(row.id)}>Delete</button>
-                                    </div>
-                                </div>
-                                <div className='row' id='content'>
-                                    <p>{row.content}</p>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-                {
-                    this.state.showModal? <CreateOrEdit 
-                    showModal={this.state.showModal}
-                    close = {() =>
-                        this.setState({
-                            showModal: false,
-                            dataEdit : {}
-                        })
-                    }
-                    edit={this.state.dataEdit}
-                    save = {this.save}
+                <Table>
+                <TableHead>
+                <TableRow>
+                    <TableCell>
+                    id
+                    </TableCell>
+                    <TableCell>
+                    Title
+                    </TableCell>
+                    <TableCell>
+                    Content
+                    </TableCell>
+                    <TableCell>
+                    </TableCell>
+                    <TableCell>
+                    </TableCell>
+                </TableRow>
+                </TableHead>
+                <TableBody>
+                {this.state.data.map((customer) => (
+                    <TableRow
+                    hover
+                    key={customer.id}
                     >
-                    </CreateOrEdit>
-                    : null
-                }
+                    <TableCell>
+                        {customer.id}
+                    </TableCell>
+                    <TableCell>
+                        {customer.title}
+                    </TableCell>
+                    <TableCell>
+                        {customer.content}
+                    </TableCell>
+                    <TableCell align={"right"}>
+                        <Button onClick={() => this.edit(customer)} color="primary">Edit</Button>
+                        {/* <Button variant="contained" color="primary" onClick={() => this.edit(row)}>
+                        Edit
+                        </Button> */}
+                        <Button onClick={() => this.delete(customer.id)} color="primary">Delete</Button>
+                        {/* <Button variant="contained" color="primary" >
+                        Delete
+                        </Button> */}
+                    </TableCell>
+                    </TableRow>
+                ))}
+                </TableBody>
+            </Table>
+                    {
+                        this.state.showModal? <CreateOrEdit 
+                        showModal={this.state.showModal}
+                        close = {() =>
+                            this.setState({
+                                showModal: false,
+                                dataEdit : {}
+                            })
+                        }
+                        edit={this.state.dataEdit}
+                        save = {this.save}
+                        >
+                        </CreateOrEdit>
+                        : null
+                    }
         </div>
         {/* <Pagination count={10} page={this.state.page} onChange={this.handleChangePage} /> */}
             </Card>

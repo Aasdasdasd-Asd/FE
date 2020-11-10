@@ -7,19 +7,23 @@ import ProductListView from 'src/views/product/ProductListView';
 import SettingsView from 'src/views/settings/SettingsView';
 import Blog from 'src/views/blog'
 import { Navigate } from 'react-router';
+import auth from './views/auth/LoginView'
 
-const auth = true
+const authent = auth
+
+console.log(auth);
+
 const routesProtected = [
   {
     path: 'app',
     element: <DashboardLayout />,
     children: [
-      { path: 'account', element: auth ? <AccountView /> : <Navigate to='/login'/> },
-      { path: 'customers', element: auth ? <CustomerListView /> : <Navigate to='/login'/>},
-      { path: 'dashboard', element: auth ? <DashboardView /> : <Navigate to='/login'/>},
-      { path: 'products', element: auth ? <ProductListView /> : <Navigate to='/login'/>},
-      { path: 'settings', element: auth ? <SettingsView /> : <Navigate to='/login'/>},
-      { path: 'blog', element: auth ? <Blog /> : <Navigate to='/login'/> },
+      { path: 'account', element: authent ? <AccountView /> : <Navigate to='/login'/> },
+      { path: 'customers', element: authent ? <CustomerListView /> : <Navigate to='/login'/>},
+      { path: 'dashboard', element: authent ? <DashboardView /> : <Navigate to='/login'/>},
+      { path: 'products', element: authent ? <ProductListView /> : <Navigate to='/login'/>},
+      { path: 'settings', element: authent ? <SettingsView /> : <Navigate to='/login'/>},
+      { path: 'blog', element: authent ? <Blog /> : <Navigate to='/login'/> },
       { path: '*', element: <Navigate to="/" /> }
     ]
   }

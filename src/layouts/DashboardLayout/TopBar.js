@@ -15,6 +15,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
+import LoginService from 'src/services/LoginService'
+
+const login = new LoginService()
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -31,6 +34,9 @@ const TopBar = ({
 }) => {
   const classes = useStyles();
   const [notifications] = useState([]);
+  function hanldclick(){
+    login.logout()
+  }
 
   return (
     <AppBar
@@ -53,7 +59,7 @@ const TopBar = ({
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={hanldclick}>
             <InputIcon />
           </IconButton>
         </Hidden>

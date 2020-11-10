@@ -1,13 +1,22 @@
 import Axios from "axios"
 
-class LoginService{
-    URL = 'http://localhost:5000'
+const URL = 'http://localhost:5000'
 
+class LoginService{
     async login(data){
-        return await Axios.post(this.URL+'/api/login',data,).then(result => {
-              console.log(result);
+        return await Axios.post(URL+'/api/login',data,)}
+    async logout(){
+        return await Axios.post(URL+'/api/logout').then(() => {
+            localStorage.removeItem("token");
           }).catch(err => console.log(err))
     }
+    async register(data) {
+        return Axios.post(URL + "/api/register", data);
+      }
+    
+    async getCurrentUser() {
+        return JSON.parse(localStorage.getItem('token'));;
+      }
 }
 
 export default LoginService
