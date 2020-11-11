@@ -50,7 +50,7 @@ export default class Search extends React.Component{
                         variant="outlined"
                     />
                 </Box>
-                <Button style={{marginLeft: '60px'}} className='col' onClick={this.handleSubmit} variant="contained" color="primary">Search</Button>
+                <Button style={{marginLeft: '60px', 'height' : '2rem', marginTop: '15px', 'width' : '3rem'}} className='col' onClick={this.handleSubmit} variant="contained" color="primary">Search</Button>
             </div>
         )
     }

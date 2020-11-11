@@ -6,9 +6,10 @@ class LoginService{
     async login(data){
         return await Axios.post(URL+'/api/login',data,)}
     async logout(){
-        return await Axios.post(URL+'/api/logout').then(() => {
+        await Axios.post(URL+'/api/logout').then(() => {
             localStorage.removeItem("token");
           }).catch(err => console.log(err))
+        return true
     }
     async register(data) {
         return Axios.post(URL + "/api/register", data);

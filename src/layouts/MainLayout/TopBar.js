@@ -25,11 +25,11 @@ const TopBar = ({ className, ...rest }) => {
       elevation={0}
       {...rest}
     >
-      <Toolbar className={classes.toolbar}>
+      {/* <Toolbar className={classes.toolbar}>
         <RouterLink to="/">
           <Logo />
         </RouterLink>
-      </Toolbar>
+      </Toolbar> */}
     </AppBar>
   );
 };

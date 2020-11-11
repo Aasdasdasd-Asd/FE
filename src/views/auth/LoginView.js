@@ -16,8 +16,6 @@ import LoginService from '../../services/LoginService'
 
 const login = new LoginService()
 
-export let auth = false
-
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -30,11 +28,6 @@ const useStyles = makeStyles((theme) => ({
 const LoginView = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-  // function handleSubmit(event){
-  //   // LogIn.login()
-  //   event.preventDefault();
-  //   console.log(event.preventDefault());
-  // }
   return (
     <Page
       className={classes.root}
@@ -49,25 +42,30 @@ const LoginView = () => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              username: 'thucuc',
-              password: 'thucuc'
+              username: '1234',
+              password: 'abcd'
             }}
             validationSchema={Yup.object().shape({
               username: Yup.string().min(4).max(16).required('Username is required'),
               password: Yup.string().min(4).max(16).required('Password is required')
             })}
-            onSubmit={(values) => {
+            onSubmit={(values, { setSubmitting }) => {
               let data = {
                 username : values.username,
                 password : values.password
               }
+              setTimeout(() => {
                 login.login(data).then(response => {
                   if (response.data.access_token) {
                     localStorage.setItem("token", JSON.stringify(response.data));
-                    auth = true
                     navigate('/app/dashboard', { replace: true });
                   }
+                }).catch((error) => {
+                  console.log(error);
+                  alert(error)
+                  setSubmitting(false);
                 })
+              },40) 
               }
             }
           >

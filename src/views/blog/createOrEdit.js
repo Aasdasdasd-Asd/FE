@@ -1,5 +1,7 @@
 import React from 'react'
 import './createOrEdit.css'
+import {Editor, EditorState} from 'draft-js';
+
 
 export default class CreateOrEdit extends React.Component{
     // state = {
@@ -19,11 +21,12 @@ export default class CreateOrEdit extends React.Component{
                 id: this.props.edit.id,
                 title: this.props.edit.title,
                 content: this.props.edit.content
-            }
+            },
+            editorState: EditorState.createEmpty()
         }
         this.handleChange = this.handleChange.bind(this);
         this.save = this.save.bind(this);
-        this.close = this.close.bind(this);
+        this.close = this.close.bind(this);        
     }
 
     componentDidMount(){
@@ -55,12 +58,20 @@ export default class CreateOrEdit extends React.Component{
             }
           });
       }
+    onEditorStateChange = (editorState) => {
+        console.log(editorState)
+        this.setState({
+          edit:{
+            content : editorState
+          }
+        });
+      };
     
     render(){        
         let showModal = 'none'
         if(this.props.showModal){
             showModal = 'block'
-        }        
+        }
         return(
             <div style={{ display  : showModal}} id="myModal" className="modal">
                 <div className="modal-dialog modal-lg">
@@ -76,7 +87,10 @@ export default class CreateOrEdit extends React.Component{
                                 </div>
                                 <div className='row'>
                                     <label className='col-2 label'>Content</label>
-                                    <textarea className='col-8' placeholder='Content' name='content' value={this.state.edit.content} onChange={this.handleChange}></textarea>
+                                    <Editor
+                                        editorState={this.state.edit.content}
+                                        onChange={this.onEditorStateChange}
+                                    />
                                 </div>
                             </div>
                             <div className="modal-footer">

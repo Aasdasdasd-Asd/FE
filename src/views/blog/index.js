@@ -46,6 +46,7 @@ export default class Blog extends Component{
     }
 
     async show(id){
+        
         return await this.service.show(id).then((result) => {
             this.setState({
                data :  result.data.result
@@ -61,9 +62,11 @@ export default class Blog extends Component{
     }
 
     async delete(id){
-        await this.service.delete(id).then(async () => {
-            this.searchByTitle(this.state.titleSearch)
-        }).catch(err => { alert(err)})
+        if(window.confirm("Are you want to delete the Post?")){
+            await this.service.delete(id).then(async () => {
+                this.searchByTitle(this.state.titleSearch)
+            }).catch(err => { alert(err)})
+        }
     }
 
     async search(title){
@@ -124,7 +127,7 @@ export default class Blog extends Component{
             <Card>
             <div >
                 <div className='top row' >
-                    <Button style={{'width' : '5rem', 'margin' : '40px' }} onClick={this.create} variant="contained" color="primary">Create new</Button>
+                    <Button style={{'width' : '8rem','height' : '2rem' ,'margin' : '55px' }} onClick={this.create} variant="contained" color="primary">Create new</Button>
                     <div id='search'>
                         <Search titleSearch={this.searchByTitle}></Search>
                     </div>
@@ -140,8 +143,6 @@ export default class Blog extends Component{
                     </TableCell>
                     <TableCell>
                     Content
-                    </TableCell>
-                    <TableCell>
                     </TableCell>
                     <TableCell>
                     </TableCell>
