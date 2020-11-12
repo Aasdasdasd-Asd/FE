@@ -8,6 +8,8 @@ import SettingsView from 'src/views/settings/SettingsView';
 import Blog from 'src/views/blog'
 import { Navigate } from 'react-router';
 
+console.log(localStorage.getItem('token'));
+
 const routesProtected = [
   {
     path: 'app',

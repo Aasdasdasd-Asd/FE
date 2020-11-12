@@ -1,7 +1,7 @@
 import React from 'react'
 import './createOrEdit.css'
-import {Editor, EditorState} from 'draft-js';
-
+// import {Editor, EditorState} from 'draft-js';
+import JoditEditor from "jodit-react";
 
 export default class CreateOrEdit extends React.Component{
     // state = {
@@ -22,7 +22,7 @@ export default class CreateOrEdit extends React.Component{
                 title: this.props.edit.title,
                 content: this.props.edit.content
             },
-            editorState: EditorState.createEmpty()
+            // editorState: EditorState.createEmpty()
         }
         this.handleChange = this.handleChange.bind(this);
         this.save = this.save.bind(this);
@@ -67,14 +67,28 @@ export default class CreateOrEdit extends React.Component{
         });
       };
     
-    render(){        
+    setContent(newContent){
+          this.setState({
+            edit:{
+                content : newContent
+              }
+          })
+      }
+    
+    render(){    
+        const editor = ''
+	    const content = ''
+	
+	    const config = {
+		readonly: false // all options from https://xdsoft.net/jodit/doc/
+	    }    
         let showModal = 'none'
         if(this.props.showModal){
             showModal = 'block'
         }
         return(
             <div style={{ display  : showModal}} id="myModal" className="modal">
-                <div className="modal-dialog modal-lg">
+                <div  id='ModalCreate'>
                     <div className="modal-content">
                         <form>
                             <div className="modal-header">
@@ -87,9 +101,13 @@ export default class CreateOrEdit extends React.Component{
                                 </div>
                                 <div className='row'>
                                     <label className='col-2 label'>Content</label>
-                                    <Editor
-                                        editorState={this.state.edit.content}
-                                        onChange={this.onEditorStateChange}
+                                    <JoditEditor
+                                        ref={editor}
+                                        value={content}
+                                        config={config}
+                                        tabIndex={1} // tabIndex of textarea
+                                        onBlur={(newContent) => this.setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                                        onChange={newContent => {}}
                                     />
                                 </div>
                             </div>

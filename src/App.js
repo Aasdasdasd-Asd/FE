@@ -15,7 +15,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       {route}
-      { routesProtect}
+      {routesProtect}
     </ThemeProvider>
   );
 };
