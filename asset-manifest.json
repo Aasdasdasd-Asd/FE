@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/FE/static/css/main.13f63e3a.chunk.css",
-    "main.js": "/FE/static/js/main.fa863112.chunk.js",
-    "main.js.map": "/FE/static/js/main.fa863112.chunk.js.map",
-    "runtime-main.js": "/FE/static/js/runtime-main.670526a1.js",
-    "runtime-main.js.map": "/FE/static/js/runtime-main.670526a1.js.map",
-    "static/css/2.18fb2ca0.chunk.css": "/FE/static/css/2.18fb2ca0.chunk.css",
-    "static/js/2.d8cb9f41.chunk.js": "/FE/static/js/2.d8cb9f41.chunk.js",
-    "static/js/2.d8cb9f41.chunk.js.map": "/FE/static/js/2.d8cb9f41.chunk.js.map",
-    "index.html": "/FE/index.html",
-    "precache-manifest.e939b0024b6e0257a12a60227da80e27.js": "/FE/precache-manifest.e939b0024b6e0257a12a60227da80e27.js",
-    "service-worker.js": "/FE/service-worker.js",
-    "static/css/2.18fb2ca0.chunk.css.map": "/FE/static/css/2.18fb2ca0.chunk.css.map",
-    "static/css/main.13f63e3a.chunk.css.map": "/FE/static/css/main.13f63e3a.chunk.css.map",
-    "static/js/2.d8cb9f41.chunk.js.LICENSE.txt": "/FE/static/js/2.d8cb9f41.chunk.js.LICENSE.txt"
+    "main.css": "/FE/build/index.html/static/css/main.13f63e3a.chunk.css",
+    "main.js": "/FE/build/index.html/static/js/main.87a5ea27.chunk.js",
+    "main.js.map": "/FE/build/index.html/static/js/main.87a5ea27.chunk.js.map",
+    "runtime-main.js": "/FE/build/index.html/static/js/runtime-main.a0b6f2d5.js",
+    "runtime-main.js.map": "/FE/build/index.html/static/js/runtime-main.a0b6f2d5.js.map",
+    "static/css/2.18fb2ca0.chunk.css": "/FE/build/index.html/static/css/2.18fb2ca0.chunk.css",
+    "static/js/2.988c6cba.chunk.js": "/FE/build/index.html/static/js/2.988c6cba.chunk.js",
+    "static/js/2.988c6cba.chunk.js.map": "/FE/build/index.html/static/js/2.988c6cba.chunk.js.map",
+    "index.html": "/FE/build/index.html/index.html",
+    "precache-manifest.5c372a35200df72c6b301813fad28090.js": "/FE/build/index.html/precache-manifest.5c372a35200df72c6b301813fad28090.js",
+    "service-worker.js": "/FE/build/index.html/service-worker.js",
+    "static/css/2.18fb2ca0.chunk.css.map": "/FE/build/index.html/static/css/2.18fb2ca0.chunk.css.map",
+    "static/css/main.13f63e3a.chunk.css.map": "/FE/build/index.html/static/css/main.13f63e3a.chunk.css.map",
+    "static/js/2.988c6cba.chunk.js.LICENSE.txt": "/FE/build/index.html/static/js/2.988c6cba.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.670526a1.js",
+    "static/js/runtime-main.a0b6f2d5.js",
     "static/css/2.18fb2ca0.chunk.css",
-    "static/js/2.d8cb9f41.chunk.js",
+    "static/js/2.988c6cba.chunk.js",
     "static/css/main.13f63e3a.chunk.css",
-    "static/js/main.fa863112.chunk.js"
+    "static/js/main.87a5ea27.chunk.js"
   ]
 }
