@@ -12,7 +12,7 @@ export default class CreateOrEdit extends React.Component{
     //         content: this.props.edit.content
     //     }
     // }
-
+    x = ''
     constructor(props) {
         super(props)
         this.state = {
@@ -46,8 +46,8 @@ export default class CreateOrEdit extends React.Component{
         })
     }
 
-    save(){        
-        this.props.save(this.state.edit)
+    save(){     
+        this.props.save(this.state.edit, this.x)
         this.close()
     }
     handleChange(event) { 
@@ -58,29 +58,16 @@ export default class CreateOrEdit extends React.Component{
             }
           });
       }
-    onEditorStateChange = (editorState) => {
-        console.log(editorState)
-        this.setState({
-          edit:{
-            content : editorState
-          }
-        });
-      };
-    
-    setContent(newContent){
-          this.setState({
-            edit:{
-                content : newContent
-              }
-          })
+
+      handleChangeContent(value){
+        this.x = value
+        console.log(this.x);
       }
-    
-    render(){    
-        const editor = ''
-	    const content = ''
+    render(){   
+        console.log(this.state.edit.content);
 	
 	    const config = {
-		readonly: false // all options from https://xdsoft.net/jodit/doc/
+		    readonly: false // all options from https://xdsoft.net/jodit/doc/
 	    }    
         let showModal = 'none'
         if(this.props.showModal){
@@ -102,12 +89,10 @@ export default class CreateOrEdit extends React.Component{
                                 <div className='row'>
                                     <label className='col-2 label'>Content</label>
                                     <JoditEditor
-                                        ref={editor}
-                                        value={content}
+                                        value={this.state.edit.content}
                                         config={config}
                                         tabIndex={1} // tabIndex of textarea
-                                        onBlur={(newContent) => this.setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-                                        onChange={newContent => {}}
+                                        onChange={newContent => this.handleChangeContent(newContent)}
                                     />
                                 </div>
                             </div>

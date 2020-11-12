@@ -107,7 +107,8 @@ export default class Blog extends Component{
             dataEdit: row
         })
     }
-    save = (edit) =>{      
+    save = (edit,content) =>{      
+        edit.content = content
         if(edit.id){
             this.update(edit)
         } else {
